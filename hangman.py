@@ -79,28 +79,42 @@ WORDS = ('jazz', 'buzz', 'hajj', 'fuzz', 'jinx', 'jazzy', 'fuzzy', 'faffs', 'fiz
 sizeHangman = 0
 word = random.choice(WORDS)
 hiddenWord = list('-' * len(word))
-lettersGuessed = []
+#lettersGuessed = []
+requiredGuesses = set(word)
+lettersGuessed = set()
+
 print('\tHANGMAN GAME\n\t\tBy Lewis Cornwall\n\thttp://codereview.stackexchange.com/questions/23678/hangman-in-python')
 while sizeHangman < MAX:
-    print('This is your hangman:' + HANGMAN[sizeHangman] + '\nThis is the word:\n' + ''.join(hiddenWord) + '\nThese are the letters you\'ve already guessed:\n' + str(lettersGuessed))
-    while True:
-        guess = raw_input('Guess a letter: ').lower()
-        if guess in lettersGuessed:
-            print('You\'ve already guessed that letter!')
-        else:
-            break
-    if guess in word:
-        print('Well done, "' + guess + '" is in my word!')
-        for i, letter in enumerate(word):
-            if guess == letter:
-                hiddenWord[i] = guess
-        if '-' not in hiddenWord:
-            print('Congratulations! My word was ' + word + '!')
-            break
+    hiddenWord = ''.join('-' if l in requiredGuesses else l for l in word)
+    print('This is your hangman:' + HANGMAN[sizeHangman] +
+        '\nThis is the word:\n' + ''.join(hiddenWord) +
+        '\nThese are the letters you\'ve already guessed:\n' +
+         str(lettersGuessed))
+#    while True:
+    guess = raw_input('Guess a letter: ').lower()
+
+    # then later
+    if guess in lettersGuessed:
+        print('You already guessed this')
+    elif guess in requiredGuesses:
+        print('Correct guess!')
+        requiredGuesses.remove(guess)
+        lettersGuessed.add(guess)
     else:
-        print('Unfortunately, "' + guess + '" is not in my word.')
+        print('Incorrect guess')
+        lettersGuessed.add(guess)
         sizeHangman += 1
-    lettersGuessed.append(guess)
+
+    if not requiredGuesses:
+        print('You found the word:\n')
+        print(word.upper())
+        print('\n')
+        break
+    else:
+        print('stuff')
+#        print(''.join('-' if l in requiredGuesses else l for l in word))
+
+
 else:
     print('This is your hangman: ' + HANGMAN[sizeHangman] + 'You\'ve been hanged! My word was actually ' + word + '.')
 input('Press <enter> to close.')
