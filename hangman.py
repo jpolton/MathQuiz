@@ -1,79 +1,14 @@
 import random
-HANGMAN = (
-'''
--------+''',
-'''
-       +
-       |
-       |
-       |
-       |
-       |
--------+''',
-'''
-  -----+
-       |
-       |
-       |
-       |
-       |
--------+''',
-'''
-  -----+
-  |    |
-       |
-       |
-       |
-       |
--------+''',
-'''
-  -----+
-  |    |
-  O    |
-       |
-       |
-       |
--------+''',
-'''
-  -----+
-  |    |
-  O    |
-  |    |
-       |
-       |
--------+''',
-'''
-  -----+
-  |    |
-  O    |
- /|    |
-       |
-       |
--------+''',
-'''
-  -----+
-  |    |
-  O    |
- /|\   |
-       |
-       |
--------+''',
-'''
-  -----+
-  |    |
-  O    |
- /|\   |
- /     |
-       |
--------+''',
-'''
-  -----+
-  |    |
-  O    |
- /|\   |
- / \   |
-       |
--------+''')
+HANGMAN = [
+'  +---+   \n  |   |   \n      |   \n      |   \n      |   \n      |   \n========= \n',
+'  +---+   \n  |   |   \n  0   |   \n      |   \n      |   \n      |   \n========= \n',
+'  +---+   \n  |   |   \n  0   |   \n  |   |   \n      |   \n      |   \n========= \n',
+'  +---+   \n  |   |   \n  0   |   \n /|   |   \n      |   \n      |   \n========= \n',
+'  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n      |   \n      |   \n========= \n',
+'  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n /    |   \n      |   \n========= \n',
+'  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n / \\  |   \n      |   \n========= \n'
+]
+
 MAX = len(HANGMAN) - 1
 WORDS = ('jazz', 'buzz', 'hajj', 'fuzz', 'jinx', 'jazzy', 'fuzzy', 'faffs', 'fizzy', 'jiffs', 'jazzed', 'buzzed', 'jazzes', 'faffed', 'fizzed', 'jazzing', 'buzzing', 'jazzier', 'faffing', 'fuzzing')
 sizeHangman = 0
@@ -86,7 +21,7 @@ lettersGuessed = set()
 print('\tHANGMAN GAME\n\t\tBy Lewis Cornwall\n\thttp://codereview.stackexchange.com/questions/23678/hangman-in-python')
 while sizeHangman < MAX:
     hiddenWord = ''.join('-' if l in requiredGuesses else l for l in word)
-    print('This is your hangman:' + HANGMAN[sizeHangman] +
+    print('This is your hangman:\n' + HANGMAN[sizeHangman] +
         '\nThis is the word:\n' + ''.join(hiddenWord) +
         '\nThese are the letters you\'ve already guessed:\n' +
          str(lettersGuessed))
@@ -116,5 +51,5 @@ while sizeHangman < MAX:
 
 
 else:
-    print('This is your hangman: ' + HANGMAN[sizeHangman] + 'You\'ve been hanged! My word was actually ' + word + '.')
+    print('This is your hangman:\n' + HANGMAN[sizeHangman] + 'You\'ve been hanged! My word was actually ' + word + '.')
 input('Press <enter> to close.')
