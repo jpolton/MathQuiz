@@ -4,6 +4,7 @@ import time # timer function
 import numpy as np # Score data reading and handling
 from tabulate import tabulate # pretty tabular data
 
+###################################
 
 def game():
     HANGMAN = [
@@ -58,7 +59,7 @@ def game():
 
     return len(word)
 
-###################################
+
 def identify_user():
     user_name = raw_input("Enter your initial: ").upper()
     if (user_name == "" or user_name == "E"):
@@ -107,8 +108,8 @@ def menu():
     user_input = float(input("Choose an option: "))
     return user_input
 
-
 ###################################
+
 def main():
     user_name, level = identify_user()
     while True:

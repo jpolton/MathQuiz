@@ -83,7 +83,7 @@ def save_score(user_name, level, score, time):
 
 def menu():
     print "-----MATHS QUIZ-----"
-    print "1. Play game"
+    print "1. Run quiz"
     print "2. Display score"
     print "3. Exit"
 
