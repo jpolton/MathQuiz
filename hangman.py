@@ -14,7 +14,6 @@ WORDS = ('jazz', 'buzz', 'hajj', 'fuzz', 'jinx', 'jazzy', 'fuzzy', 'faffs', 'fiz
 sizeHangman = 0
 word = random.choice(WORDS)
 hiddenWord = list('-' * len(word))
-#lettersGuessed = []
 requiredGuesses = set(word)
 lettersGuessed = set()
 
@@ -45,11 +44,10 @@ while sizeHangman < MAX:
         print(word.upper())
         print('\n')
         break
-    else:
-        print('stuff')
-#        print(''.join('-' if l in requiredGuesses else l for l in word))
-
 
 else:
-    print('This is your hangman:\n' + HANGMAN[sizeHangman] + 'You\'ve been hanged! My word was actually ' + word + '.')
-input('Press <enter> to close.')
+    print('This is your hangman:\n' + HANGMAN[sizeHangman] +
+        '\nThis is the word:\n' + ''.join(hiddenWord) +
+        '\nYou\'ve been hanged! My work was actaully ' + word.upper() +'\n')
+
+#input('Press <enter> to close.')
