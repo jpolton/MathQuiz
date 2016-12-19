@@ -83,23 +83,24 @@ lettersGuessed = []
 print('\tHANGMAN GAME\n\t\tBy Lewis Cornwall\n\thttp://codereview.stackexchange.com/questions/23678/hangman-in-python')
 while sizeHangman < MAX:
     print('This is your hangman:' + HANGMAN[sizeHangman] + '\nThis is the word:\n' + ''.join(hiddenWord) + '\nThese are the letters you\'ve already guessed:\n' + str(lettersGuessed))
-    guess = raw_input('Guess a letter: ').lower()
-    print(guess)
-    while guess in lettersGuessed:
-        print('You\'ve already guessed that letter!')
-        guess = input('Guess a letter: ').lower()
+    while True:
+        guess = raw_input('Guess a letter: ').lower()
+        if guess in lettersGuessed:
+            print('You\'ve already guessed that letter!')
+        else:
+            break
     if guess in word:
         print('Well done, "' + guess + '" is in my word!')
-        for i in range(len(word)):
-            if guess == word[i]:
+        for i, letter in enumerate(word):
+            if guess == letter:
                 hiddenWord[i] = guess
-                if hiddenWord.count('-') == 0:
-                    print('Congratulations! My word was ' + word + '!')
-                    input('Press <enter> to close.')
-                    sys.exit()
+        if '-' not in hiddenWord:
+            print('Congratulations! My word was ' + word + '!')
+            break
     else:
         print('Unfortunately, "' + guess + '" is not in my word.')
         sizeHangman += 1
     lettersGuessed.append(guess)
-print('This is your hangman: ' + HANGMAN[sizeHangman] + 'You\'ve been hanged! My word was actually ' + word + '.')
+else:
+    print('This is your hangman: ' + HANGMAN[sizeHangman] + 'You\'ve been hanged! My word was actually ' + word + '.')
 input('Press <enter> to close.')
