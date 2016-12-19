@@ -4,6 +4,13 @@ import time # timer function
 import numpy as np # Score data reading and handling
 from tabulate import tabulate # pretty tabular data
 
+"""
+19 Dec 2016: jpolton. Adapted from Lewis Cornwall: http://codereview.stackexchange.com/questions/23678/hangman-in-python
+
+To do:
+* Read words from dictionary
+* implement level settings
+"""
 ###################################
 
 def game():
@@ -68,6 +75,9 @@ def identify_user():
         level = 10
     elif user_name == "J":
         print("Hello Daddy!")
+        level = 100
+    elif user_name == "Y":
+        print("Hello Mummy!")
         level = 100
     else:
         print("Nice to meet you ", user_name)
