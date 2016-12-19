@@ -3,7 +3,7 @@ import random
 import time
 import os.path # query existance of score file name
 from tabulate import tabulate # pretty tabular data
-import numpy as np
+import numpy as np # Score data reading and handling
 
 
 
@@ -55,7 +55,7 @@ def identify_user():
         print("Nice to meet you ", user_name)
     	level = 10
     # Create a score file if it doesn't exist
-    filename = user_name + "_" + str(level) + ".txt"
+    filename = "mathquiz_" + user_name + "_" + str(level) + ".txt"
     if not os.path.isfile(filename):
         target = open(filename, 'w')
         target.write( '%s %s' % ('Score', 'Time(s)') )
@@ -64,7 +64,7 @@ def identify_user():
     return user_name, level
 
 def display_score(user_name, level):
-    filename = user_name + "_" + str(level) + ".txt"
+    filename = "mathquiz_" + user_name + "_" + str(level) + ".txt"
     target = open(filename, 'r')
     stuff = np.loadtxt(target, skiprows=1)
     print tabulate(stuff,headers=('Score','Time (s)'))
@@ -74,7 +74,7 @@ def display_score(user_name, level):
     return
 
 def save_score(user_name, level, score, time):
-    filename = user_name + "_" + str(level) + ".txt"
+    filename = "mathquiz_" + user_name + "_" + str(level) + ".txt"
     target = open(filename, 'a')
     target.write( '%d %d' % (score, time) )
     target.write('\n')
