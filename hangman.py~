@@ -47,8 +47,7 @@ def play(word):
             '\nThese are the letters you\'ve already guessed:\n' +
             ", ".join(str(e) for e in lettersGuessed))
 
-        # Check that the input is a single character string
-	while True:
+        while True:
 	    guess = raw_input('Guess a letter: ').lower()
 
             if len(guess) == 1:
