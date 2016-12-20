@@ -133,8 +133,7 @@ def main():
         menu_choice = menu()
 
         if menu_choice == 1:      # play game
-            words = load_words()           
-            QUESTIONS = 10
+            words = load_words()
             start = time.time()
             score = play(random.choice(words))
             end = time.time()
