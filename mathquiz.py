@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import operator
 import random
 import time

@@ -1,3 +1,5 @@
+#!/usr/bin python
+
 import random
 import os.path # query existance of score file name
 import time # timer function
@@ -8,7 +10,7 @@ from tabulate import tabulate # pretty tabular data
 19 Dec 2016: jpolton. Adapted from Lewis Cornwall: http://codereview.stackexchange.com/questions/23678/hangman-in-python
 
 To do:
-* Read words from dictionary
+* Maybe use a cgi implementation for web
 * implement level settings choosing correct word based on possible permutations: http://stackoverflow.com/questions/15936937/given-a-list-of-words-how-to-put-them-into-families
 
 """
@@ -16,6 +18,9 @@ To do:
 
 def play(word):
     HANGMAN = [
+    '          \n          \n          \n          \n          \n      |   \n========= \n',
+    '          \n      |   \n      |   \n      |   \n      |   \n      |   \n========= \n',
+    '  +---+   \n      |   \n      |   \n      |   \n      |   \n      |   \n========= \n',
     '  +---+   \n  |   |   \n      |   \n      |   \n      |   \n      |   \n========= \n',
     '  +---+   \n  |   |   \n  0   |   \n      |   \n      |   \n      |   \n========= \n',
     '  +---+   \n  |   |   \n  0   |   \n  |   |   \n      |   \n      |   \n========= \n',
@@ -133,8 +138,7 @@ def main():
         menu_choice = menu()
 
         if menu_choice == 1:      # play game
-            words = load_words()           
-            QUESTIONS = 10
+            words = load_words()
             start = time.time()
             score = play(random.choice(words))
             end = time.time()

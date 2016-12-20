@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import random
 import os.path # query existance of score file name
 import time # timer function
@@ -16,6 +18,9 @@ To do:
 
 def play(word):
     HANGMAN = [
+    '          \n          \n          \n          \n          \n      |   \n========= \n',
+    '          \n      |   \n      |   \n      |   \n      |   \n      |   \n========= \n',
+    '  +---+   \n      |   \n      |   \n      |   \n      |   \n      |   \n========= \n',
     '  +---+   \n  |   |   \n      |   \n      |   \n      |   \n      |   \n========= \n',
     '  +---+   \n  |   |   \n  0   |   \n      |   \n      |   \n      |   \n========= \n',
     '  +---+   \n  |   |   \n  0   |   \n  |   |   \n      |   \n      |   \n========= \n',

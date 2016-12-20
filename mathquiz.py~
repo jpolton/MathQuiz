@@ -5,7 +5,15 @@ import os.path # query existance of score file name
 from tabulate import tabulate # pretty tabular data
 import numpy as np # Score data reading and handling
 
+"""
+19 Dec 2016: jpolton. Adapted from discussion: http://codereview.stackexchange.com/questions/77299/math-equation-generator-program
+dan0117: http://codereview.stackexchange.com/users/62824/dan0117
+200_success: http://codereview.stackexchange.com/users/9357/200-success
 
+To do:
+* move scores into single dictionary file
+* implement sequence completion testing? 
+"""
 
 OPERATIONS = [
     ('+', operator.add),
@@ -33,7 +41,7 @@ def quiz(number_of_questions,level):
         user_input = float(input('What is {} ? '.format(question)))
 	while (user_input != answer and tries < 3):
 	    user_input = float(input('Try again. What is {} ? '.format(question)))
-            tries += 1 
+            tries += 1
         if answer == user_input:
             print("Correct!\n")
             score += 1
@@ -51,6 +59,9 @@ def identify_user():
     elif user_name == "J":
         print("Hello Daddy!")
     	level = 100
+    elif user_name == "Y":
+        print("Hello Mummy!")
+        level = 100
     else:
         print("Nice to meet you ", user_name)
     	level = 10
@@ -83,7 +94,7 @@ def save_score(user_name, level, score, time):
 
 def menu():
     print "-----MATHS QUIZ-----"
-    print "1. Run quiz"
+    print "1. Play game"
     print "2. Display score"
     print "3. Exit"
 
