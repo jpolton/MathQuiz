@@ -8,7 +8,7 @@ from tabulate import tabulate # pretty tabular data
 19 Dec 2016: jpolton. Adapted from Lewis Cornwall: http://codereview.stackexchange.com/questions/23678/hangman-in-python
 
 To do:
-* Maybe use a cgi implementation for web 
+* Maybe use a cgi implementation for web
 * implement level settings choosing correct word based on possible permutations: http://stackoverflow.com/questions/15936937/given-a-list-of-words-how-to-put-them-into-families
 
 """
