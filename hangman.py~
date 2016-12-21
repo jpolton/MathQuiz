@@ -74,14 +74,16 @@ def play(word):
             print('You found the word:\n')
             print(word.upper())
             print('\n')
-            break
+            score = len(word)
+	    break
 
     else:
         print('This is your hangman:\n' + HANGMAN[sizeHangman] +
             '\nThis is the word:\n' + ''.join(hiddenWord) +
-            '\nYou\'ve been hanged! My work was actaully ' + word.upper() +'\n')
+            '\nYou\'ve been hanged! My word was actaully ' + word.upper() +'\n')
+	score = 0
 
-    return len(word)
+    return score
 
 def load_words():
     words = []
@@ -154,9 +156,10 @@ def main():
             score = play(random.choice(words))
             end = time.time()
             duration = int(round(end-start))
-            print('{user_name}, you found the {score} letter word in {duration} seconds'.format(**locals()))
+	    if score != 0: print('{user_name}, you found the {score} letter word in {duration} seconds'.format(**locals()))
             print('\n')
             save_score(user_name, level, score, duration )
+	    raw_input('<PAUSE>')
 
         elif menu_choice == 2:        # Display score
             display_score(user_name, level)
