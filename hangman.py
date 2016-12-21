@@ -75,7 +75,7 @@ def play(word):
             print(word.upper())
             print('\n')
             score = len(word)
-	    break
+            break
 
     else:
         print('This is your hangman:\n' + HANGMAN[sizeHangman] +
