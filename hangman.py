@@ -80,7 +80,10 @@ def play(word):
     else:
         print('This is your hangman:\n' + HANGMAN[sizeHangman] +
             '\nThis is the word:\n' + ''.join(hiddenWord) +
-            '\nYou\'ve been hanged! My word was actaully ' + word.upper() +'\n')
+
+            '\nThese are the letters you\'ve already guessed:\n' +
+            ", ".join(str(e) for e in lettersGuessed) + 
+            '\nYou\'ve been hanged!\nMy word was:\n\n' + word.upper() )
 	score = 0
 
     return score
