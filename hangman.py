@@ -157,6 +157,7 @@ def main():
             print('{user_name}, you found the {score} letter word in {duration} seconds'.format(**locals()))
             print('\n')
             save_score(user_name, level, score, duration )
+	    raw_input('<PAUSE>')
 
         elif menu_choice == 2:        # Display score
             display_score(user_name, level)
