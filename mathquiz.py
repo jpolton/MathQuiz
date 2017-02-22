@@ -29,6 +29,11 @@ def random_question(binary_operations, operand_range):
     op_sym, op_func = random.choice(binary_operations)
     n1 = random.randint(min(operand_range), max(operand_range))
     n2 = random.randint(min(operand_range), max(operand_range))
+    if(op_sym=='-'):
+        n3=max(n1,n2)
+        n4=min(n1,n2)
+        n1=n3
+        n2=n4
     question = '{} {} {}'.format(n1, op_sym, n2)
     answer = op_func(n1, n2)
     return question, answer
@@ -57,7 +62,7 @@ def identify_user():
     if (user_name == "" or user_name == "E"):
         user_name = "E"
         print("Hello E!")
-	level = 10
+	level = 20
     elif user_name == "J":
         print("Hello Daddy!")
     	level = 100
